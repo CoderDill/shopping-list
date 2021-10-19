@@ -15,7 +15,7 @@ app.patch("/items/:name", (req, res, next) => {});
 
 app.delete("/items/:name", (req, res, next) => {});
 
-app.get("favicon.ico", (req, res) => res.sendStatus(204));
+app.get("/favicon.ico", (req, res) => res.sendStatus(204));
 
 app.use(function (req, res, next) {
   const error = new ExpressError("Not Found", 404);
