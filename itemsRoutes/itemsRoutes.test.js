@@ -44,6 +44,10 @@ describe("POST /items", () => {
 
     expect(res.body).toEqual({ item: { name: "butter", price: 1.99 } });
   });
+  test("Responds with 400 if no data", async () => {
+    const res = await request(app).post("/items").send({});
+    expect(res.statusCode).toBe(400);
+  });
 });
 
 describe("PATCH /items/:name", () => {

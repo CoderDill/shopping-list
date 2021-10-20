@@ -8,9 +8,15 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const newItem = { name: req.body.name, price: req.body.price };
-  items.push(newItem);
-  res.status(201).json({ item: newItem });
+  try {
+    if (!req.body.name || !req.body.price)
+      throw new ExpressError("Name and Price required", 400);
+    const newItem = { name: req.body.name, price: req.body.price };
+    items.push(newItem);
+    return res.status(201).json({ item: newItem });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 router.get("/:name", (req, res, next) => {
