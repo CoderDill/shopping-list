@@ -34,7 +34,8 @@ router.patch("/:name", (req, res, next) => {
 
 router.delete("/:name", (req, res, next) => {
   const item = items.find((i) => i.name === req.params.name);
-  if (item === -1) {
+
+  if (item === undefined) {
     throw new ExpressError("Item not found", 404);
   }
   items.splice(item, 1);
