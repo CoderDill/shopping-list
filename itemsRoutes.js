@@ -12,4 +12,8 @@ router.get("/:name", (req, res, next) => {
   res.json({ item });
 });
 
+router.patch("/:name", (req, res, next) => {
+    
+})
+
 module.exports = router;
